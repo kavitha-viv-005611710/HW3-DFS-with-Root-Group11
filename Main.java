@@ -1,12 +1,9 @@
 package edu.dt;
 
-import java.io.IOError;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * Created by tphadke on 8/29/17.
@@ -14,28 +11,14 @@ import java.util.Scanner;
 public class Main {
     Map <Processor, List<Processor> > graph ;
 
-    /**
-     * passing root to init
-     * @param root
-     */
-    public  Main(int root){
+    public  Main(){
 
-        init(root);
+        init();
 
     }
 
-    /**
-     * asks user for selecting a root value to initiate the program
-     * @param args
-     */
     public static void main ( String args[]){
-        Scanner Cin = new Scanner(System.in);
-
-            System.out.println("Please select a root processor(0-5)");
-            int root = Cin.nextInt();
-            Main m = new Main(root);
-
-
+        Main m = new Main();
 
         //TODO: Choose a processor as a Root
         //TODO: Send an initial message Message.M to this processor.
@@ -44,12 +27,7 @@ public class Main {
 
     }
 
-    /**
-     * Initializing all processors, and taking root from user input to send first
-     * message to this processor to begin the algo
-     * @param root
-     */
-    public void init(int root){
+    public void init(){
         Processor p0 = new Processor();
         p0.id = 0;
         Processor p1 = new Processor();
@@ -95,33 +73,9 @@ public class Main {
         p3.unexplored = p3neighbors;
         p4.unexplored = p4neighbors;
         p5.unexplored = p5neighbors;
-
-
-        switch(root) {
-            case 0:
-                p0.sendMessgeToMyBuffer(Message.M,p0);
-                break;
-            case 1:
-                p1.sendMessgeToMyBuffer(Message.M,p1);
-                break;
-            case 2:
-                p2.sendMessgeToMyBuffer(Message.M,p2);
-                break;
-            case 3:
-                p3.sendMessgeToMyBuffer(Message.M,p3);
-                break;
-            case 4:
-                p4.sendMessgeToMyBuffer(Message.M,p4);
-                break;
-            case 5:
-                p5.sendMessgeToMyBuffer(Message.M,p5);
-                break;
-        }
-
-
-
-
-
+        
+        
+        p5.sendMessgeToMyBuffer(Message.M,p5);
 
         graph = new HashMap<>();
 
